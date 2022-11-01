@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pagamento;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 
 class FinanceiroController extends Controller
@@ -16,8 +17,7 @@ class FinanceiroController extends Controller
     public function index()
     {
         $data = Pagamento::get();
-        $teste = "teste";
-        return view("financeiro", ["pagamentos" => $data, "teste"=> $teste]);
+        return view("financeiro", ["pagamentos" => $data]);
     }
 
     /**
@@ -27,7 +27,7 @@ class FinanceiroController extends Controller
      */
     public function create()
     {
-        //
+        return view("create");
     }
 
     /**
@@ -38,7 +38,15 @@ class FinanceiroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'descricao' => $request->descricao,
+            'tipo'      => $request->tipo,
+            'valor'     => $request->valor
+        ];
+
+        Pagamento::create($data);
+        return redirect(route("financeiro.index"));
+
     }
 
     /**
@@ -60,7 +68,13 @@ class FinanceiroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Pagamento::where('id',"=",$id)->first();
+        if (empty($data)) {
+            return redirect(route("financeiro.index"));
+        }
+        return view("edit", ["pagamento" => $data]);
+
+        
     }
 
     /**
@@ -72,7 +86,14 @@ class FinanceiroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'descricao' => $request->descricao,
+            'tipo'      => $request->tipo,
+            'valor'     => $request->valor
+        ];
+
+        Pagamento::where("id", '=', $id)->update($data);
+        return redirect(route("financeiro.index"));
     }
 
     /**
@@ -83,6 +104,9 @@ class FinanceiroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Pagamento::where("id", '=', $id);
+        $user->delete();
+        return redirect(route('financeiro.index')); 
+        
     }
 }
