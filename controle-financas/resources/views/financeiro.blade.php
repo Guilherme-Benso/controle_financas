@@ -29,14 +29,16 @@ use Illuminate\Database\Migrations\Migration;
                                 <td>{{$pagamento->tipo}}</td>
                                 <td>{{$pagamento->valor}}</td>
                                 <td style="display:flex; gap:5px;">
-                                    <a class="btn btn-primary" href="{{route('financeiro.edit',['id'=>$pagamento->id])}}">Editar</a>   
+                                    <a class="btn btn-primary" href="{{route('financeiro.edit',['id'=>$pagamento->id])}}">Editar</a>
                                     <form id="delete" method="POST" action="{{route('financeiro.destroy',['id'=>$pagamento->id])}}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="btn btn-danger">
-                                            <button type="submit">Deletar</button>
+                                            <button type="submit" id="liveToastBtn">Deletar</button>
                                         </div>
+
                                     </form>
+
                                 </td>
                             </tr>
                             @endforeach
@@ -49,5 +51,6 @@ use Illuminate\Database\Migrations\Migration;
             </div>
         </div>
     </div>
+    
 
 </x-app-layout>
