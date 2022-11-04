@@ -35,6 +35,10 @@ use Illuminate\Database\Migrations\Migration;
                                         @method('DELETE')
                                         <div class="btn btn-danger">
                                             <button type="submit" id="liveToastBtn">Deletar</button>
+                                            <div class="total">
+                                                <span>Total:</span>
+                                                <span>{{}}</span>
+                                            </div>
                                         </div>
 
                                     </form>

@@ -109,4 +109,12 @@ class FinanceiroController extends Controller
         return redirect(route('financeiro.index')); 
         
     }
+
+    public function resto(Request $request){
+        $data = [
+            'valor'     => $request->valor
+        ];
+        Pagamento::select SUM();
+
+    }
 }
