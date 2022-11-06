@@ -114,7 +114,7 @@ class FinanceiroController extends Controller
         $data = [
             'valor'     => $request->valor
         ];
-        Pagamento::select SUM();
+     
 
     }
 }
