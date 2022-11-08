@@ -37,7 +37,7 @@ use Illuminate\Database\Migrations\Migration;
                                             <button type="submit" id="liveToastBtn">Deletar</button>
                                             <div class="total">
                                                 <span>Total:</span>
-                                                <span>{{}}</span>
+                                          
                                             </div>
                                         </div>
 
