@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Models\Pagamento;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class FinanceiroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = [
             'descricao' => $request->descricao,

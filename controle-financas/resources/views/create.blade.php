@@ -15,7 +15,7 @@ use Illuminate\Database\Migrations\Migration;
                         @csrf
                         <div class="mb-3">
                             <label for="descricao" class="form-label">Descrição</label>
-                            <input type="text" class="form-control" id="descricao" placeholder="Digite uma descrição" name="descricao" required>
+                            <!-- <input type="text" class="form-control" id="descricao" placeholder="Digite uma descrição" name="descricao" required> -->
                         </div>
                         <div class="mb-3">
                             <label for="tipo">Selecione o tipo</label>
@@ -26,13 +26,16 @@ use Illuminate\Database\Migrations\Migration;
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="valor" class="form-label">Valor</label>
-                            <input type="number" class="form-control" id="valor" placeholder="1.000" name="valor" required>
+                            <!-- <label for="valor" class="form-label">Valor</label> -->
+                            <!-- <input type="number" class="form-control" id="valor" placeholder="1.000" name="valor" required> -->
+
+                            @if($errors->any())
+                            {{ $errors[1] }}
+                            
+                            @endif
                         </div>
                         <input type="submit" name="submit" class="btn btn-success" style="background-color: #198754;">
                     </form>
-
-
 
                 </div>
             </div>
